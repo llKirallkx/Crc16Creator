@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const readline = require('readline');
 const stream = require('stream');
+const cors = require('cors');
 
 // Configura o multer para armazenar arquivos em memória
 const storage = multer.memoryStorage();
@@ -9,6 +10,7 @@ const upload = multer({ storage: storage });
 
 // Inicializa o app Express
 const app = express();
+app.use(cors());
 
 // Função para verificar o dígito 10 e chamar outra função se necessário
 async function processFile(buffer, lineCallback, specificCallback) {
